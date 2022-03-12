@@ -1,0 +1,18 @@
+{
+  "Informatik": {
+      "video": "nMsL_BaaAEc",
+      "text": "Dies ist die Testseite für Informatik"
+  },
+  "Maschinenbau": {
+      "video": "v5Mvk_73Pg4",
+      "text": "Dies ist die Testseite für Maschinenbau"
+  },
+  "Elektrotechnik": {
+      "video": "Y-ARvx8m9v8",
+      "text": "Dies ist die Testseite für Elektrotechnik"
+  },
+  "Wirtschaftsinformatik": {
+      "video": "GsHkS2qT690",
+      "text": "Dies ist die Testseite für Wirtschaftsinformatik"
+  }
+}
