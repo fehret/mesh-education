@@ -211,7 +211,7 @@ nav#navigation{
     line-height: 1.5em;
     padding: 1em 35px;
     text-decoration: none;
-    width: 13em;
+    width: 16em;
 }
 
 #navigation ul li a:before{
@@ -329,14 +329,44 @@ nav a[aria-current=page]{
     color: white;
 }
 
-/* Style the search box inside the navigation bar */
+/* Style the search box inside the navigation bar*/
 .topnav input[type=text] {
-    float: right;
     padding: 6px;
-    border: none;
-    margin-top: 8px;
+    border: 1px;
     margin-right: 16px;
     font-size: 17px;
+    width: 20%;
+    background: #f1f1f1;
+}
+
+/* Style the submit button */
+.topnav button {
+    width: 5%;
+    padding: 6px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: 1px solid grey;
+    border: none; /* Prevent double borders */
+    cursor: pointer;
+}
+
+.topnav button:hover {
+    background: #0b7dda;
+}
+
+/* Clear floats */
+.topnav::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.topnav input[type=text]:focus {
+    border-bottom: 3px solid #555;
+
 }
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
@@ -353,3 +383,4 @@ nav a[aria-current=page]{
         border: 1px solid #ccc;
     }
 }
+
