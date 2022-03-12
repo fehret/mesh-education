@@ -16,6 +16,15 @@ echo('
     </a>
 </header>
 
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#about">Fächer</a>
+        <a href="#about">Hochschulorte</a>        
+        <a href="#about">Hochschule</a>
+        <input type="text" placeholder="Suche nach Studiengang..">
+        <input type="text" placeholder="Suche nach Standort..">
+    </div>
+
 <main>
 
     <nav id="navigation">
