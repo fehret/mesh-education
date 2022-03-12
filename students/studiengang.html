@@ -55,8 +55,51 @@
                 console.log(json["logo"])
                 logo.setAttribute("src", "./logo/" + json["logo"])
 
-                //video.innerHTML = video_html
-                //video.hidden = false
+                let arr = ["Abschluss", "Sprache", "Studienort", "Beginn", "Schluss", "Dauer", "NC"]
+
+                for(let i = 0; i < 7; i++) {
+
+                    let data = json[fach][arr[i]]
+
+                    if(i === 0){
+                        if(data === "BoS"){
+                            data = "Bachelor of Science"
+                        }else{
+                            data = "Bachelor of Engineering"
+                        }
+                    }else if(i === 1){
+                        if(data === "D"){
+                            data = "Deutsch"
+                        }
+                    }else if(i === 3) {
+                        if (data === ["WS", "SS"]) {
+                            data = "Wintersemester und Sommersemester"
+                        } else if (data === "WS") {
+                            data = "Wintersemester"
+                        }
+                    }else if(i === 5){
+                        data = data + " Semester"
+                    }else if(i === 6){
+                        if(data === 0){
+                            data = "Kein NC"
+                        }else{
+                            data = "Eine Note von min. " + data + " ist erforderlich"
+                        }
+                    }
+
+                    document.getElementById(arr[i]).innerHTML = data
+                }
+
+                let arra = ["vorname", "nachname", "email", "telefon", "adresse"]
+
+                for(let i = 0; i < 5; i++) {
+
+                    let data = json["kontakt"][arra[i]]
+
+                    document.getElementById(arra[i]).innerHTML = data
+                }
+
+
             }else{
                 console.log(fach)
                 //window.location.replace("students.php");
@@ -80,47 +123,161 @@
 
     <nav id="navigation">
         <ul>
-            <li><a aria-current="page">Home</a></li>
-            <li><a href="1-unterseite.html">Über uns</a></li>
-            <li><a href="1-unterseite.html#">Leistungen</a></li>
-            <li><a href="1-unterseite.html">Referenzobjekte</a>
-            <li><a href="1-unterseite.html">Anfahrt</a></li>
+            <li><a aria-current="page">Überblick</a></li>
+            <li><a href="1-unterseite.html">Vorstellung</a></li>
+            <li><a href="1-unterseite.html#">Module</a></li>
+            <li><a href="1-unterseite.html">Aufgaben/Klausuren</a>
+            <li><a href="1-unterseite.html">Vorlesungen</a></li>
             <li><a href="2-contact.html">Kontakt</a></li>
         </ul>
     </nav>
 
     <section id="intro">
-        <h2 id="welcome"></h2>
+        <table>
+            <tr>
+                <td>
+                    <h2 id="welcome"></h2>
+                </td>
+                <td>
+                    <img id="logo_image" src="" alt="logo" style="width:200px; margin-left: 50px">
+                </td>
+            </tr>
+        </table>
         <p>
 
         </p>
     </section>
-
 
     <section class="spalte">
         <h2>Was dich erwartet</h2>
         <p>
-            <img id="logo_image" src="" alt="Dummybild - bitte Alternativbeschreibung einfügen">
             <div id="description"></div>
             <a class="more" href="1-unterseite.html">weiter lesen</a>
+        <p></p>
     </section>
 
 
     <section class="spalte">
-        <h2>Lorem ipsum</h2>
-        <p>
-            Lorem ipsum dolor sit amet consectetiu eradipiscing elit sed diam.
-        </p>
-        <ul class="square">
-            <li><a href="#">Lorem ipsum</a></li>
-            <li><a href="#">Lorem ipsum dolor</a></li>
-            <li><a href="#">Lorem ipsmum dolor sit</a></li>
-            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-        </ul>
-        <a class="more" href="1-unterseite.html">weiter lesen</a>
+        <h2>Steckbrief</h2>
+        <p></p>
+        <table class="styled-table">
+            <tr>
+                <td>
+                    Abschluss
+                <td id="Abschluss"></td>
+            </tr>
+            <tr>
+                <td>
+                    Sprache
+                </td>
+                <td id="Sprache"></td>
+            </tr>
+            <tr>
+                <td>
+                    Studienort
+                </td>
+                <td id="Studienort"></td>
+            </tr>
+            <tr>
+                <td>
+                    Beginn
+                </td>
+                <td id="Beginn"></td>
+            </tr>
+            <tr>
+                <td>
+                    Schluss
+                </td>
+                <td id="Schluss"></td>
+            </tr>
+            <tr>
+                <td>
+                    Dauer
+                </td>
+                <td id="Dauer"></td>
+            </tr>
+            <tr>
+                <td>
+                    NC
+                </td>
+                <td id="NC"></td>
+            </tr>
+        </table>
+        <p></p>
     </section>
-    <div id="video"></div>
 
+    <section class = "kontakt">
+        <h2>Kontaktformular</h2>
+        <form action="SENDEADRESSE" id="ft-form" method="POST" accept-charset="UTF-8" style="margin-right: 10%">
+            <fieldset>
+                <label>
+                    Name
+                    <input type="text" name="Name" required>
+                </label>
+                <label>
+                    E-Mail-Adresse
+                    <input type="email" name="E-Mail" required>
+                </label>
+                <label>
+                    Ihre Nachricht
+                    <textarea rows="3" name="Nachricht" required></textarea>
+                </label>
+                <div>
+                    <label>
+                        <input type="checkbox" name="Datenverarbeitung bestätigt" value="Ja" required>
+                        Ich bestätige, dass ich mit der Verarbeitung meiner Eingaben zum Zwecke der Anfragebearbeitung, einverstanden bin.
+                    </label>
+                </div>
+            </fieldset>
+            <div class="btns">
+                <input type="text" name="_gotcha" value="" style="display:none;">
+                <input type="submit" value="Absenden">
+            </div>
+        </form>
+    </section>
+
+    <section class = "contact-info">
+        <h2>Steckbrief</h2>
+        <p></p>
+        <table class="styled-table">
+            <tr>
+                <td>
+                    Vorname
+                <td id="vorname"></td>
+            </tr>
+            <tr>
+                <td>
+                    Nachname
+                </td>
+                <td id="nachname"></td>
+            </tr>
+            <tr>
+                <td>
+                    EMail
+                </td>
+                <td id="email"></td>
+            </tr>
+            <tr>
+                <td>
+                    Telefon
+                </td>
+                <td id="telefon"></td>
+            </tr>
+            <tr>
+                <td>
+                    Adresse
+                </td>
+                <td id="adresse"></td>
+            </tr>
+        </table>
+        <p></p>
+    </section>
+
+    <section class="video">
+        <h2>Vorstellungsvideo</h2>
+        <div id="video"></div>
+        <p></p>
+    </section>
 
 </main>
 

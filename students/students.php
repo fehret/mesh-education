@@ -17,7 +17,7 @@
 
     <div class="topnav">
         <a class="active" href="#home">Home</a>
-        <a href="#about">Fächer</a>
+        <a href="list.html">Studiengänge</a>
         <a href="#about">Hochschulorte</a>        
         <a href="#about">Hochschule</a>
         <table style="float: right">

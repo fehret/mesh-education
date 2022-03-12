@@ -10,19 +10,110 @@
     "logo" : "koblenz.jpg",
     "Informatik": {
       "video": "nMsL_BaaAEc",
-      "text": "Dies ist die Testseite für Informatik"
+      "text": "Erster Abschnitt: Die Studierenden besitzen eine gute Kenntnis des Innenlebens eines Computers. Sie sind mit dem Betriebssystem Windows und Entwicklungsumgebungen zur Erstellung eigener Programme in einer prozeduralen Programmiersprache vertraut. Sie beherrschen neue Werkzeuge der Programmiertechnik. Sie können selbständig ausgewählte Algorithmen konzipieren, die Konzepte programmiertechnisch umsetzen und die erfolgreiche Ausführung dokumentieren. Insbesondere beherrschen die Studierenden Berechnungen mit Zufallzahlen, Stringoperationen, Feldern, Schleifen und Boolscher Algebra sowie trigonometrische Berechnungen und Sortieralgorithmen, Monte-Carlo-Simulationen und die lineare Regression.\nZweiter Abschnitt: Die Studierenden beherrschen das in den Bereichen Steuerung/Regelung, numerische Modellierung, Auswertung und graphische Darstellung von Experimentaldaten häufig anzutreffende Software-Werkzeug MATLAB. Sie können sich und anderen die Inhalte der Physik- und Mathematikvorlesungen mit Hilfe von MATLAB veranschaulichen.",
+      "Abschluss": "BoE",
+      "Sprache": "D",
+      "Studienort": "Remagen",
+      "Beginn": "WS",
+      "Schluss": "Oktober",
+      "Dauer": 6,
+      "NC": 0
     },
     "Maschinenbau": {
       "video": "v5Mvk_73Pg4",
-      "text": "Dies ist die Testseite für Maschinenbau"
+      "text": "Die ersten drei Semester gewähren eine sorgfältige Ausbildung in den erforderlichen Grundlagen des Maschinenbaus. Sie bilden die Basis für das später im Beruf geforderte lebenslange Lernen. Zusätzlich wird eine Fremdsprache (Englisch) gelehrt und die Fähigkeit zu effektivem Arbeiten geschult. Die folgenden vier Semester vertiefen die Kenntnisse und Fähigkeiten unter dem Gesichtspunkt der Qualifikation für nahezu alle Berufsfelder. ",
+      "Abschluss": "MoE",
+      "Sprache": "D",
+      "Studienort": "Koblenz",
+      "Beginn": ["WS","SS"],
+      "Schluss": "Oktober",
+      "Dauer": 3,
+      "NC": 1.8
     },
     "Elektrotechnik": {
       "video": "Y-ARvx8m9v8",
-      "text": "Dies ist die Testseite für Elektrotechnik"
+      "text": "Es werden bewusst keine Spezialisten ausgebildet, deren Kenntnisse schon innerhalb kurzer Zeit veraltet wären. Eine breite Ausbildung erreicht vielmehr, dass im Studium erworbenes Wissen langfristig nutzbringend eingesetzt und zukunftssicher weiterentwickelt werden kann. Das Studium befähigt ebenfalls zur Übernahme von Managementaufgaben, zur Führung von Mitarbeitern und zur Gründung von Unternehmen. Ein qualifizierter Bachelorabschluss in Elektrotechnik eröffnet den Zugang zu Masterstudiengängen. An der Hochschule Koblenz wird der konsekutive Masterstudiengang Systemtechnik angeboten.",
+      "Abschluss": "BoE",
+      "Sprache": "D",
+      "Studienort": "Koblenz",
+      "Beginn": ["WS","SS"],
+      "Schluss": "Oktober bzw. April",
+      "Dauer": 7,
+      "NC": 1.8
     },
     "Wirtschaftsinformatik": {
       "video": "GsHkS2qT690",
-      "text": "Dies ist die Testseite für Wirtschaftsinformatik"
+      "text": "Der Bachelorstudiengang Wirtschaftsinformatik ist grundlagenorientiert. Wesentliche Säulen des Studiums sind die Wirtschaftsinformatik, Informatik und Wirtschaftswissenschaften. Ergänzt werden diese Kernbereiche durch unterstützende Wissenschaften wie Mathematik und Statistik, Recht sowie Soft Skills. Im Verlauf Ihres Studiums haben Sie die Möglichkeit, mit Vertiefungen in Wirtschaftsinformatik/Informatik und Wirtschaftswissenschaften sich zu spezialisieren. Die umfassende Ausbildung bereitet auf die konsekutiven Masterstudiengänge Wirtschaftsinformatik oder E-Government vor. Ein Anschluss der Masterstudiengänge Informationsmanagement und Web Science ist ebenfalls möglich.",
+      "Abschluss": "BoS",
+      "Sprache": "D",
+      "Studienort": "Campus Koblenz",
+      "Beginn": ["WS","SS"],
+      "Schluss": "Mitte Oktober bzw. Mitte April",
+      "Dauer": 6,
+      "NC": 0
+    },
+    "kontakt": {
+      "vorname": "Petra",
+      "nachname": "Meinerz",
+      "email" : "meinerz@uni-koblenz.de",
+      "telefon" : "0261 287 1607",
+      "adresse" : "Emil-Schüller-Str. 12, 1. EG, R. 034"
+    }
+  },
+  "stuttgart": {
+    "text": "DHBW Stuttgart",
+    "logo": "stuttgart.svg",
+    "kontakt": {
+      "vorname": "Astrid",
+      "nachname": "Oltmann",
+      "email": "studienberatung@dhbw-stuttgart.de",
+      "telefon": "0711 1849 744",
+      "adresse": "keine Adresse verfügbar"
+    },
+    "Informatik": {
+      "video": "xI4tZ5Kapc0",
+      "text": "In unserem dualen Informatikstudium erlangen die Studierenden informationstechnische, betriebswirtschaftliche und interkulturelle Kompetenzen. Sie können so IT-Systeme und -Anwendungen mitgestalten. Studienarbeiten, Lehreprojekte und Laborübungen sorgen dafür, dass die Theoriephasen nicht nur theoretisch sind.",
+      "Abschluss": "BoS",
+      "Sprache": "D",
+      "Studienort": "Campus Stuttgart",
+      "Beginn": "WS",
+      "Schluss": "Oktober",
+      "Dauer": 6,
+      "NC": 0
+    },
+    "Wirtschafsinformatik": {
+      "video": "ASu7VtxVlyI",
+      "text": "„Data is the new oil“ – getreu diesem Leitspruch bereiten wir Studierende des Studiengangs Wirtschaftsinformatik mit der Studienrichtung Data Science auf die speziellen technologischen und betriebswirtschaftlichen Herausforderungen der Digital Economy vor.",
+      "Abschluss": "BoS",
+      "Sprache": "D",
+      "Studienort": "Campus Stuttgart",
+      "Beginn": "WS",
+      "Schluss": "Oktober",
+      "Dauer": 6,
+      "NC": 0
+    },
+    "Maschinenbau": {
+      "video": "O-ja8A81TiU",
+      "text": "„Nach dem dualen Studium können sie Produkte (weiter-)entwickeln sowie Maschinen und Anlagen planen und entwerfen. Mit einem fundierten Basis- und einem breiten Praxiswissen qualifizieren sich die Absolventinnen und Absolventen auch für Managementaufgaben und Leitungsfunktionen.\n\nTypische Tätigkeitsfelder: Neu-/Weiterentwicklung von Produkten, Steuerung von Maschine und Anlagen, Überwachung von Fertigung/Montage, Konstruktion von Fahrzeugteilen etc.",
+      "Abschluss": "BoS",
+      "Sprache": "D",
+      "Studienort": "Campus Stuttgart",
+      "Beginn": "WS",
+      "Schluss": "Oktober",
+      "Dauer": 6,
+      "NC": 0
+    },
+    "Elektrotechnik": {
+      "video": "nmtTlNrnKZ4",
+      "text": "„Smartphones, Assistenzsysteme, Smart Home und Medizintechnik – die Elektrotechnik verändert die Welt. Ingenieur*innen der Elektrotechnik gestalten und entwickeln solche Systeme. So haben sie direkten Einfluss auf das alltägliche Leben. Das duale Studium an der DHBW Stuttgart verbindet Theorie mit Praxis und bildet somit die perfekte Grundlage für eine vielversprechende Karriere.",
+      "Abschluss": "BoS",
+      "Sprache": "D",
+      "Studienort": "Campus Stuttgart",
+      "Beginn": "WS",
+      "Schluss": "Oktober",
+      "Dauer": 6,
+      "NC": 0
     }
   }
+
 }
