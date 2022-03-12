@@ -21,9 +21,9 @@
         <a href="#about">Hochschulorte</a>        
         <a href="#about">Hochschule</a>
         <table style="float: right">
-            <form action="action_page.php">
-                <input type="text" placeholder="Suche nach Studiengang.." style="margin-left:10%" required>
-                <input type="text" placeholder="Suche nach Standort..   "                         required>
+            <form action="studiengang.html" method = "get">
+                <input name="study" type="text" placeholder="Suche nach Studiengang.." style="margin-left:10%" required>
+                <input name="location" type="text" placeholder="Suche nach Standort..   "                         required>
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </table>

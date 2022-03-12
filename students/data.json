@@ -1,18 +1,28 @@
 {
-  "Informatik": {
+  "fach" : {
+    "Informatik" : ["computer science", "computer", "informatics", "informatik", "informationstechnik", "data science", "automotive"],
+    "Maschinenbau": ["maschinenbau", "mechanical engineering", "machinenbau"],
+    "Elektrotechnik": ["elektrotechnik", "elektronik", "electrical engineering"],
+    "Wirtschaftsinformatik": ["wirtschaftinformatik", "business informatics", "economy"]
+  },
+  "koblenz": {
+    "text" : "Hochschule Koblenz",
+    "logo" : "koblenz.jpg",
+    "Informatik": {
       "video": "nMsL_BaaAEc",
       "text": "Dies ist die Testseite für Informatik"
-  },
-  "Maschinenbau": {
+    },
+    "Maschinenbau": {
       "video": "v5Mvk_73Pg4",
       "text": "Dies ist die Testseite für Maschinenbau"
-  },
-  "Elektrotechnik": {
+    },
+    "Elektrotechnik": {
       "video": "Y-ARvx8m9v8",
       "text": "Dies ist die Testseite für Elektrotechnik"
-  },
-  "Wirtschaftsinformatik": {
+    },
+    "Wirtschaftsinformatik": {
       "video": "GsHkS2qT690",
       "text": "Dies ist die Testseite für Wirtschaftsinformatik"
+    }
   }
 }

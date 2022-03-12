@@ -14,6 +14,10 @@
                 .then(json => setFach(json));
         }
 
+        function getKeyByValue(object, value) {
+            return Object.keys(object).find(key => object[key].includes(value.toLowerCase()) )
+        }
+
         function setFach(json) {
             //let fach_arr = ["Informatik", "Maschinenbau", "Elektrotechnik", "Wirtschaftsinformatik"]
             //let embeds = ["nMsL_BaaAEc", "v5Mvk_73Pg4", "Y-ARvx8m9v8", "GsHkS2qT690"]
@@ -21,13 +25,16 @@
             console.log(json);
 
             let params = new URLSearchParams(location.search);
-            let fach = params.get('fach');
+            let fach = getKeyByValue(json["fach"],params.get('study'));
+            let locat = params.get('location').toLowerCase();
+            json = json[locat];
             if (Object.keys(json).includes(fach)){
 
                 //let fach_idx = fach_arr.indexOf(fach);
                 let text = document.getElementById("welcome");
                 let video = document.getElementById("video");
-                let desc = document.getElementById("description")
+                let desc = document.getElementById("description");
+                let logo = document.getElementById("logo_image");
 
                 let frame = document.createElement("iframe");
 
@@ -42,13 +49,17 @@
                 console.log(link)
                 console.log(video_html)
                 video.appendChild(frame);
-                text.innerHTML = "Willkommen <span>bei "+fach+"</span>";
+                text.innerHTML = "Willkommen <span>bei "+ fach + " an der " + json["text"] + "</span>";
                 desc.appendChild(document.createTextNode(json[fach].text))
+
+                console.log(json["logo"])
+                logo.setAttribute("src", "./logo/" + json["logo"])
 
                 //video.innerHTML = video_html
                 //video.hidden = false
             }else{
-                window.location.replace("students.php");
+                console.log(fach)
+                //window.location.replace("students.php");
             }
 
 
@@ -62,7 +73,6 @@
         <h1 id="logo">SelfHTML Design 03</h1>
         <p>Deine Suche für Hochschulen</p>
     </a>
-
     
 </header>
 
@@ -90,7 +100,7 @@
     <section class="spalte">
         <h2>Was dich erwartet</h2>
         <p>
-            <img src="img/dummy-3.jpg" alt="Dummybild - bitte Alternativbeschreibung einfügen">
+            <img id="logo_image" src="" alt="Dummybild - bitte Alternativbeschreibung einfügen">
             <div id="description"></div>
             <a class="more" href="1-unterseite.html">weiter lesen</a>
     </section>
