@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="interessen.css">
+    <title>Studi-Check</title>
+
+    <script>
+        function sendInput() {
+            let choices = ""
+            let curr_slider;
+            for (var i = 1; i < 11; i++) {
+                curr_slider = document.getElementById("range" + i)
+                choices = choices + "/" + curr_slider.value/10
+            }
+            var url = 'https://hackathon.indorf-dev.de:80/infer'+choices;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    location.href = "result.html?result="+json['value']
+                }else{
+                    console.log(xhr.status)
+                    console.log(xhr.responseText)
+                    location.href = "interessen.html"
+                }
+            }
+            xhr.send();
+        }
+
+    </script>
+
+</head>
+<body>
+
+<header>
+    <a class="ribbon" tabindex="-1" title="zurück zur Startseite!" href="students.php">
+        <div style="align-content: center" >
+            <img style="display: inline-block" src="imgs/StudiCheckNoText.png" height="45px">
+            <h1 style="display: inline-block; vertical-align: center" id="logo">Studi-Check</h1>
+        </div>
+
+        <p>Hauptsache kein BWL</p>
+    </a>
+</header>
+
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="list.html">Studiengänge</a>
+    <a href="places.html">Hochschulorte</a>
+    <table style="float: right">
+        <form action="studiengang.html" method = "get">
+            <input name="study" type="text" placeholder="Suche nach Studiengang.." style="margin-left:10%" required>
+            <input name="location" type="text" placeholder="Suche nach Standort..   "                         required>
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </table>
+</div>
+
+<main>
+    <nav id="navigation">
+        <ul>
+            <li><a href="/students/students.php">Willkommen</a></li>
+            <li><a aria-current="page" href="interessen.html">Was interessiert mich?</a></li>
+            <li><a href="questions.html">Q&A</a>
+            <li><a href="students.php">Über uns</a></li>
+            <li><a href="students.php">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <section id="intro">
+        <h2>Dein Studiengangsfinder <span> für viele Universitäten</span></h2>
+        <p>
+            Du hast noch keine Ahnung, was du studieren sollst? </br>
+            Oder willst du einfach testen, was noch gefallen könnte?</br>
+            </br>Dann fülle doch einfach den kurzen Fragebogen aus und wir ermitteln für dich, welche Studiengänge in Frage kommen!
+        </p>
+    </section>
+
+
+    <div>
+        Findest du es interessant...
+        <br><br>
+        <div>
+            ... ein <strong>eigenes Unternehmen</strong> zu gründen und dann auch zu führen?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range1">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... <strong>Artikel und Beiträge</strong> für Medien (z.B. Zeitungen, Onlinemagazine, Radio etc.) zu verfassen?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range2">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... <strong>rechtliche Fragestellungen</strong> zu bearbeiten?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range3">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... Situationen und Abläufe systematisch zu <strong>beobachten und zu analysieren</strong>?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range4">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... <strong>wissenschaftliche Experimente</strong> zu planen, durchzuführen und auszuwerten?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range5">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... dich umfassend mit <strong>Kunst, Literatur oder Musik</strong> zu befassen?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range6">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... <strong>Computernetzwerke einzurichten</strong> und zu betreuen?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range7">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... Werbemittel (z.B. von Bildern, Anzeigen, Webseiten, Verpackungen etc.) <strong>grafisch zu gestalten</strong>?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range8">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... <strong>handwerklich</strong> zu arbeiten?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range9">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <div>
+            ... <strong> Statistiken und Diagramme </strong> für verschiedene Geschäftsbereiche zu erstellen?<br><br>
+            <div style="width: 100%; align-content: center">
+                <div class="slidecontainer" style="width: 80%">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="range10">
+                    <div style="display: flex;justify-content: space-between">
+                        <div>Gar nicht</div>
+                        <div>Neutral</div>
+                        <div>Sehr interessant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="sendInput()" class="button">Auswertung ansehen!</button>
+    </div>
+</main>
+</body>
+</html>

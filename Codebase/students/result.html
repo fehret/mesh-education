@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="interessen.css">
+    <title>Studi-check</title>
+
+    <script>
+        function load_data() {
+            fetch("studies.json")
+                .then(response => response.json())
+                .then(json => setResult(json));
+        }
+
+        function setResult(json) {
+            let f = document.getElementById("rcorners1");
+            let s = document.getElementById("rcorners2");
+            let t = document.getElementById("rcorners3");
+
+            let params = new URLSearchParams(location.search);
+            let res = params.get("result");
+            if (Object.keys(json).includes(res)){
+                let inner = json[res];
+                f.innerText = inner["first"];
+                s.innerText = inner["second"];
+                t.innerText = inner["third"];
+            }else{
+                window.location.replace("interessen.html")
+            }
+
+        }
+
+    </script>
+
+</head>
+<body onload="load_data()">
+
+<header>
+    <a class="ribbon" tabindex="-1" title="zurück zur Startseite!" href="students.php">
+        <div style="align-content: center" >
+            <img style="display: inline-block" src="imgs/StudiCheckNoText.png" height="45px">
+            <h1 style="display: inline-block; vertical-align: center" id="logo">Studi-check</h1>
+        </div>
+
+        <p>Hauptsache kein BWL</p>
+    </a>
+</header>
+
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="list.html">Studiengänge</a>
+    <a href="places.html">Hochschulorte</a>
+    <a href="#about">Hochschule</a>
+    <table style="float: right">
+        <form action="studiengang.html" method = "get">
+            <input name="study" type="text" placeholder="Suche nach Studiengang.." style="margin-left:10%" required>
+            <input name="location" type="text" placeholder="Suche nach Standort..   "                         required>
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </table>
+</div>
+
+<main>
+
+    <nav id="navigation">
+        <ul>
+            <li><a aria-current="page">Willkommen</a></li>
+            <li><a href="interessen.html">Was interessiert mich?</a></li>
+            <li><a href="questions.html">Q&A</a>
+            <li><a href="students.php">Über uns</a></li>
+            <li><a href="students.php">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        Super! <br>
+        Du hast schon den ersten Schritt zum <strong>erfolgreichen Studium</strong> abgeschlossen!<br><br>
+        Unsere Studienvorschläge für deine Angaben sind:<br><br>
+        <div style="text-align: center">
+            <p id="rcorners1" style="display: inline-block"></p>
+        </div>
+        <div style="text-align: center">
+            <p id="rcorners2" style="display: inline-block"></p>
+        </div>
+        <div style="text-align: center">
+            <p id="rcorners3" style="display: inline-block"></p>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

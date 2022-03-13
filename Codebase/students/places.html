@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="interessen.css">
+  <title>Studi-Check</title>
+
+  <script>
+    function acc() {
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    }
+  </script>
+
+  <script>
+
+    function load_data() {
+      fetch("data.json")
+              .then(response => response.json())
+              .then(json => start(json));
+    }
+
+    function start(json){
+      let alp = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
+      let accs = document.getElementById("accs");
+
+      let button;
+      let div;
+      let p;
+
+      for (let i = 0; i < 26; i++) {
+        let curr_acc = document.createElement("button")
+        curr_acc.classList.add("accordion")
+        curr_acc.innerText = alp[i]
+        curr_acc.id = alp[i]+"useless"
+
+        let pan = document.createElement("div");
+        let par = document.createElement("p");
+        par.id = alp[i]+"p"
+        //par.innerText = alp[i]
+        pan.classList.add("panel")
+        pan.id = alp[i]+"useless"
+        pan.appendChild(par)
+
+        accs.appendChild(curr_acc);
+        accs.appendChild(pan);
+      }
+
+      console.log(json)
+      let used = []
+
+      for (const city in json) {
+        console.log(city)
+        if (city !== "fach"){
+          for (const fachKey in json[city]) {
+            if (fachKey.substr(0,1) === fachKey.substr(0,1).toUpperCase()){
+              console.log(city, fachKey, city.substr(0,1))
+              let category = document.getElementById(city.substr(0,1).toUpperCase()+"p");
+              console.log(category.innerHTML)
+              let link = document.createElement("a")
+              link.innerText = city.charAt(0).toUpperCase() + city.slice(1) + " - " +  fachKey +  "\n";
+              link.href = "studiengang.html?study="+fachKey+"&location="+city.charAt(0).toUpperCase() + city.slice(1);
+              category.appendChild(link);
+              if (!used.includes(city.substr(0,1).toUpperCase())){
+                used.push(city.substr(0,1).toUpperCase())
+              }
+            }
+          }
+        }
+      }
+      console.log(used)
+      var children = accs.children;
+      for (var i = 0; i < children.length; i++) {
+        let comp = ""
+        if (children[i].id.length === 1){
+          comp = children[i].id
+        }else{
+          comp = children[i].id.substr(0,1)
+        }
+
+        if(!used.includes(comp)){
+          accs.removeChild(children[i])
+        }
+      }
+
+
+      acc()
+    }
+  </script>
+  <style>
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+    }
+
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+
+    .accordion:after {
+      content: '\002B';
+      color: #777;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+    }
+
+    .active:after {
+      content: "\2212";
+    }
+
+    .panel {
+      padding: 0 18px;
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+  </style>
+
+</head>
+
+<header>
+  <a class="ribbon" tabindex="-1" title="zurück zur Startseite!" href="students.php">
+    <div style="align-content: center" >
+      <img style="display: inline-block" src="imgs/StudiCheckNoText.png" height="45px">
+      <h1 style="display: inline-block; vertical-align: center" id="logo">Studi-Check</h1>
+    </div>
+
+    <p>Hauptsache kein BWL</p>
+  </a>
+
+</header>
+
+<body onload="load_data()" id = "start">
+<h2>Studiengänge</h2>
+<p>Hier sind alle Studienorte mit den angebotenen Studiengängen alphabetisch verzeichnet</p>
+
+<div id="accs">
+</div>
+
+
+
+</body>
+</html>

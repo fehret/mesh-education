@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="students.css">
+    <title>Studi-check</title>
+
+    <script>
+        function load_data() {
+            fetch("data.json")
+                .then(response => response.json())
+                .then(json => setFach(json));
+        }
+
+        function getKeyByValue(object, value) {
+            return Object.keys(object).find(key => object[key].includes(value.toLowerCase()) )
+        }
+
+        function setFach(json) {
+            //let fach_arr = ["Informatik", "Maschinenbau", "Elektrotechnik", "Wirtschaftsinformatik"]
+            //let embeds = ["nMsL_BaaAEc", "v5Mvk_73Pg4", "Y-ARvx8m9v8", "GsHkS2qT690"]
+
+            console.log(json);
+
+            let params = new URLSearchParams(location.search);
+            let fach = getKeyByValue(json["fach"],params.get('study'));
+            let locat = params.get('location').toLowerCase();
+            json = json[locat];
+            if (Object.keys(json).includes(fach)){
+
+                //let fach_idx = fach_arr.indexOf(fach);
+                let text = document.getElementById("welcome");
+                let video = document.getElementById("video");
+                let desc = document.getElementById("description");
+                let logo = document.getElementById("logo_image");
+
+                let frame = document.createElement("iframe");
+
+                let link = "https://www.youtube.com/embed/"+json[fach].video //embeds[fach_idx]
+                let video_html = "<iframe referrerpolicy='strict-origin' width=\"560\" height=\"315\" src=\""+link+"\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+                frame.setAttribute("src", link);
+                frame.width = "560px";
+                frame.height = "315px";
+                frame.setAttribute("title", "Einführungsvideo");
+                frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+
+                video.appendChild(frame);
+                text.innerHTML = "Willkommen <span>bei "+ fach + " an der " + json["text"] + "</span>";
+                desc.appendChild(document.createTextNode(json[fach].text))
+
+                logo.setAttribute("src", "./logo/" + json["logo"])
+
+                let arr = ["Abschluss", "Sprache", "Studienort", "Beginn", "Schluss", "Dauer", "NC"]
+
+                for(let i = 0; i < 7; i++) {
+
+                    let data = json[fach][arr[i]]
+
+                    if(i === 0){
+                        if(data === "BoS"){
+                            data = "Bachelor of Science"
+                        }else{
+                            data = "Bachelor of Engineering"
+                        }
+                    }else if(i === 1){
+                        if(data === "D"){
+                            data = "Deutsch"
+                        }
+                    }else if(i === 3) {
+                        if (data === ["WS", "SS"]) {
+                            data = "Wintersemester und Sommersemester"
+                        } else if (data === "WS") {
+                            data = "Wintersemester"
+                        }
+                    }else if(i === 5){
+                        data = data + " Semester"
+                    }else if(i === 6){
+                        if(data === 0){
+                            data = "Kein NC"
+                        }else{
+                            data = "Eine Note von min. " + data + " ist erforderlich"
+                        }
+                    }
+
+                    document.getElementById(arr[i]).innerHTML = data
+                }
+
+                let arra = ["vorname", "nachname", "email", "telefon", "adresse"]
+
+                for(let i = 0; i < 5; i++) {
+
+                    document.getElementById(arra[i]).innerHTML = json["kontakt"][arra[i]]
+                }
+
+
+            }else{
+                console.log(fach)
+                window.location.replace("students.php");
+            }
+
+
+        }
+    </script>
+</head>
+<body onload="load_data()">
+
+<header>
+    <a class="ribbon" tabindex="-1" title="zurück zur Startseite!" href="students.php">
+        <div style="align-content: center" >
+            <img style="display: inline-block" src="imgs/StudiCheckNoText.png" height="45px">
+            <h1 style="display: inline-block; vertical-align: center" id="logo">Studi-check</h1>
+        </div>
+
+        <p>Hauptsache kein BWL</p>
+    </a>
+</header>
+
+<main>
+
+    <nav id="navigation">
+        <ul>
+            <li><a aria-current="page">Überblick</a></li>
+            <li><a href="#video">Vorstellung</a></li>
+            <li><a href="#steckbrief-marker">Module</a></li>
+            <li><a href="#steckbrief-marker">Aufgaben/Klausuren</a>
+            <li><a href="#steckbrief-marker">Vorlesungen</a></li>
+            <li><a href="#contact-marker">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <section id="intro">
+        <table>
+            <tr>
+                <td>
+                    <h2 id="welcome"></h2>
+                </td>
+                <td>
+                    <img id="logo_image" src="" alt="logo" style="width:200px; margin-left: 50px">
+                </td>
+            </tr>
+        </table>
+        <p>
+
+        </p>
+    </section>
+
+    <section class="spalte">
+        <h2>Was dich erwartet</h2>
+        <p>
+            <div id="description"></div>
+            <a class="more" href="1-unterseite.html">weiter lesen</a>
+        <p></p>
+    </section>
+
+
+    <section class="spalte" id="steckbrief-marker">
+        <h2>Steckbrief</h2>
+        <p></p>
+        <table class="styled-table">
+            <tr>
+                <td>
+                    Abschluss
+                <td id="Abschluss"></td>
+            </tr>
+            <tr>
+                <td>
+                    Sprache
+                </td>
+                <td id="Sprache"></td>
+            </tr>
+            <tr>
+                <td>
+                    Studienort
+                </td>
+                <td id="Studienort"></td>
+            </tr>
+            <tr>
+                <td>
+                    Beginn
+                </td>
+                <td id="Beginn"></td>
+            </tr>
+            <tr>
+                <td>
+                    Schluss
+                </td>
+                <td id="Schluss"></td>
+            </tr>
+            <tr>
+                <td>
+                    Dauer
+                </td>
+                <td id="Dauer"></td>
+            </tr>
+            <tr>
+                <td>
+                    NC
+                </td>
+                <td id="NC"></td>
+            </tr>
+        </table>
+        <p></p>
+    </section>
+
+    <section class = "kontakt" id="contact-marker">
+        <h2>Kontaktformular</h2>
+        <form action="SENDEADRESSE" id="ft-form" method="POST" accept-charset="UTF-8" style="margin-right: 10%">
+            <fieldset>
+                <label>
+                    Name
+                    <input type="text" name="Name" required>
+                </label>
+                <label>
+                    E-Mail-Adresse
+                    <input type="email" name="E-Mail" required>
+                </label>
+                <label>
+                    Ihre Nachricht
+                    <textarea rows="3" name="Nachricht" required></textarea>
+                </label>
+                <div>
+                    <label>
+                        <input type="checkbox" name="Datenverarbeitung bestätigt" value="Ja" required>
+                        Ich bestätige, dass ich mit der Verarbeitung meiner Eingaben zum Zwecke der Anfragebearbeitung, einverstanden bin.
+                    </label>
+                </div>
+            </fieldset>
+            <div class="btns">
+                <input type="text" name="_gotcha" value="" style="display:none;">
+                <input type="submit" value="Absenden">
+            </div>
+        </form>
+    </section>
+
+    <section class = "contact-info">
+        <h2>Steckbrief</h2>
+        <p></p>
+        <table class="styled-table">
+            <tr>
+                <td>
+                    Vorname
+                <td id="vorname"></td>
+            </tr>
+            <tr>
+                <td>
+                    Nachname
+                </td>
+                <td id="nachname"></td>
+            </tr>
+            <tr>
+                <td>
+                    EMail
+                </td>
+                <td id="email"></td>
+            </tr>
+            <tr>
+                <td>
+                    Telefon
+                </td>
+                <td id="telefon"></td>
+            </tr>
+            <tr>
+                <td>
+                    Adresse
+                </td>
+                <td id="adresse"></td>
+            </tr>
+        </table>
+        <p></p>
+    </section>
+
+    <section class="video">
+        <h2>Vorstellungsvideo</h2>
+        <div id="video"></div>
+        <p></p>
+    </section>
+
+</main>
+</body>
+</html>
